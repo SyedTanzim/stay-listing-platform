@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= hotel.name %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="show-container">
+        <h1><%= hotel.name %></h1>
+
+        <div><%= hotel.discription %></div>
+
+        <img src="<%= hotel.image %>" alt="Loading" height="450" width="500">
+
+        <div><strong>₹ <%= hotel.price.toLocaleString('en-IN') %></strong> / Night</div>
+        <div><%= hotel.site %></div>
+        <div><%= hotel.country %></div>
+    </div>
+
+</body>
+</html>

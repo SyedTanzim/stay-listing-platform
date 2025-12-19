@@ -1,27 +1,26 @@
 //require files
 const express = require('express');
 const path = require('path');
-const connectDB = require('./connectDB');
-const Hotel = require('./models/schema');
+const connectDB = require('./config/db');
+const hotelRoutes = require('./routes/hotels');
 
 //express app 
 const app = express();
 
 //path
-app.set('views', path.join(__dirname, 'models'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view-engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended : true}));
 
-app.get('/', (req,res)=> {
-    let hotel = Hotel.find({});
-    res.render('home.ejs' , {hotel});
-});
+//db connection
+connectDB();
+
+//routes
+app.use('/hotels', hotelRoutes);
 
 //server start
-app.listen(2003, (req,res)=> {
+app.listen(2003, ()=> {
     console.log('server started');    
 });
 
-//db connection
-connectDB();

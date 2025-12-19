@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotels</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <h1>Hotels</h1>
+
+    <% for (let hotel of hotels) { %>
+        <div class="hotel">
+            <h2><%= hotel.name %></h2>
+            <img src="<%= hotel.image %>" alt="Loading" height="200" width="270">
+
+            <form action="/hotels/<%= hotel._id %>" method="get">
+                <button type="submit">View</button>
+            </form>
+        </div>
+    <% } %>
+
+</body>
+</html>

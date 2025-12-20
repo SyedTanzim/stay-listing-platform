@@ -9,6 +9,10 @@
 <body>
 
     <h1>Hotels</h1>
+    
+    <form action="/hotels/create" method="get">
+        <button type="submit">Add hotel</button>
+    </form>
 
     <% for (let hotel of hotels) { %>
         <div class="hotel">

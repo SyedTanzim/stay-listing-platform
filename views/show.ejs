@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    <form action="/hotels/<%= hotel._id %>/edit" method="get">
+        <button type="submit">Edit</button>
+    </form>
 
     <div class="show-container">
         <h1><%= hotel.name %></h1>

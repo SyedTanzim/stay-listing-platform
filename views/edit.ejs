@@ -3,24 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>create hotel</title>
+    <title>edit information</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
     <div class="form-container">
-        <h1>Add your hotel</h1>
+        <form action="/hotels/<%= hotel._id %>/edit"?_method="PUT" method="post">
 
-        <form action="/hotels/create" method="post">
-
-            <input type="text" placeholder="Enter Name" name="hotel[name]"><br>
+            <input type="text" placeholder="Enter Name" name="hotel[name]"><br>    
             <input type="text" placeholder="discription" name="hotel[discription]"><br>
             <input type="text" placeholder="paste image url" name="hotel[image]"><br> 
             <input type="number" placeholder="Enter Price" name="hotel[price]"><br>
             <input type="text" placeholder="Enter website URL" name="hotel[site]"><br>
             <input type="text" placeholder="Enter country" name="hotel[country]"><br>
 
-            <button type="submit">Add</button>
+            <button type="submit">Update</button>
 
         </form>
     </div>

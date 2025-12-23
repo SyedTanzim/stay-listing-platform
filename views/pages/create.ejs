@@ -1,0 +1,50 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="container mt-5" style="max-width:600px;">
+        <h1 class="mb-4">Add your hotel</h1>
+
+        <form action="/hotels/create" method="post" class="needs-validation" novalidate>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" placeholder="Hotel Name" name="hotel[name]" required>
+                <div class="invalid-feedback">
+                    Add name.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" placeholder="Description" name="hotel[discription]" required>
+                                <div class="invalid-feedback">
+                    Add discription.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" placeholder="Image URL" name="hotel[image]">
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="number" placeholder="Price per night" name="hotel[price]" required>
+                <div class="invalid-feedback">
+                    Add price.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" placeholder="Website URL" name="hotel[site]" required>
+                <div class="invalid-feedback">
+                    Add website.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" placeholder="Country" name="hotel[country]" required>
+                <div class="invalid-feedback">
+                    Add country.
+                </div>
+            </div>
+
+            <button class="btn btn-success w-100">Add Hotel</button>
+
+        </form>
+    </div>

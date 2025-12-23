@@ -6,12 +6,12 @@ const router = express.Router();
 //home route
 router.get('/', async (req,res)=> {
     const hotels = await Hotel.find({});
-    res.render('index.ejs' , {hotels});
+    res.render('pages/index.ejs' , {hotels});
 });
 
 //create route
 router.get('/create', (req,res)=> {
-    res.render('create.ejs');
+    res.render('pages/create.ejs');
 });
 
 router.post('/create', (req,res)=> {
@@ -25,23 +25,25 @@ router.post('/create', (req,res)=> {
 router.get('/:id', async (req,res)=> {
     const {id} = req.params;
     const hotel = await Hotel.findById(id);
-    res.render('show.ejs', {hotel});
+    res.render('pages/show.ejs', {hotel});
 });
 
 //edit route
 router.get('/:id/edit', async (req,res)=>{
     const {id} = req.params;
     const hotel = await Hotel.findById(id);
-    res.render('edit.ejs', {hotel});
+    res.render('pages/edit.ejs', {hotel});
 });
 
-router.post('/:id/edit', async (req,res)=>{
+router.put('/:id/edit', async (req,res)=>{
     const {id} = req.params;
     await Hotel.findByIdAndUpdate(id , req.body.hotel);
     res.redirect('/hotels');   
 });
 
-router.post('/:id/delete', async (req,res)=>{
+
+//delete route
+router.delete('/:id/delete', async (req,res)=>{
     const {id} = req.params;
     await Hotel.findByIdAndDelete(id);
     res.redirect('/hotels');   

@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="container mt-5" style="max-width:600px;">
+        <h1 class="mb-4">Edit Hotel</h1>
+
+        <form action="/hotels/<%= hotel._id %>/edit?_method=PUT" method="post" class="needs-validation" novalidate>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" name="hotel[name]" value="<%= hotel.name %>" required>
+                <div class="invalid-feedback">
+                    Add name.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" name="hotel[discription]" value="<%= hotel.discription %>"
+                    required>
+                <div class="invalid-feedback">
+                    Add discription.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" name="hotel[image]" value="<%= hotel.image %>">
+
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="number" name="hotel[price]" value="<%= hotel.price %>" required>
+                <div class="invalid-feedback">
+                    Add price.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" name="hotel[site]" value="<%= hotel.site %>" required>
+                <div class="invalid-feedback">
+                    Add website.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" name="hotel[country]" value="<%= hotel.country %>" required>
+                <div class="invalid-feedback">
+                    Add country.
+                </div>
+            </div>
+
+            <button class="btn btn-primary w-100">Update</button>
+
+        </form>
+    </div>

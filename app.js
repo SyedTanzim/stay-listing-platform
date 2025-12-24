@@ -5,6 +5,7 @@ const connectDB = require('./config/db');
 const hotelRoutes = require('./routes/hotels');
 const engine = require('ejs-mate');
 const methodOverride = require('method-override');
+const errorHandler = require('./middlewares/errorHandler');
 
 //express app 
 const app = express();
@@ -32,3 +33,4 @@ app.listen(2003, ()=> {
     console.log('server started');    
 });
 
+app.use(errorHandler);

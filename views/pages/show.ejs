@@ -15,7 +15,7 @@
 
             <div class="col-md-6">
                 <p class="text-muted mt-3">
-                    <%= hotel.discription %>
+                    <%= hotel.description %>
                 </p>
 
                 <h4 class="text-success fw-bold">
@@ -32,13 +32,13 @@
         </div>
         <br>
 
-        <a href="/hotels/<%= hotel._id %>/edit">
+        <a href="/hotels/edit/<%= hotel._id %>">
             <button class="btn btn-sm btn-warning">
                 Edit
             </button>
         </a>
         <br><br>
-        <form action="/hotels/<%= hotel._id %>/delete?_method=DELETE" method="post">
+        <form action="/hotels/delete/<%= hotel._id %>?_method=DELETE" method="post">
             <button class="btn btn-sm btn-danger">
                 Delete
             </button>

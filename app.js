@@ -6,6 +6,7 @@ const hotelRoutes = require('./routes/hotels');
 const engine = require('ejs-mate');
 const methodOverride = require('method-override');
 const errorHandler = require('./middlewares/errorHandler');
+const expressError = require('./errors/expressError');
 
 //express app 
 const app = express();
@@ -31,6 +32,10 @@ app.get('/', (req,res)=> {
 //server start
 app.listen(2003, ()=> {
     console.log('server started');    
+});
+
+app.all('/{*any}', (req,res,next)=> {
+    next(new expressError(404, 'Page Not Found!'));
 });
 
 app.use(errorHandler);

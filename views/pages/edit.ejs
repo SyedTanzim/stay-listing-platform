@@ -3,7 +3,7 @@
     <div class="container mt-5" style="max-width:600px;">
         <h1 class="mb-4">Edit Hotel</h1>
 
-        <form action="/hotels/<%= hotel._id %>/edit?_method=PUT" method="post" class="needs-validation" novalidate>
+        <form action="/hotels/edit/<%= hotel._id %>?_method=PUT" method="post" class="needs-validation" novalidate>
 
             <div class="mb-3">
                 <input class="form-control" type="text" name="hotel[name]" value="<%= hotel.name %>" required>
@@ -13,10 +13,10 @@
             </div>
 
             <div class="mb-3">
-                <input class="form-control" type="text" name="hotel[discription]" value="<%= hotel.discription %>"
+                <input class="form-control" type="text" name="hotel[description]" value="<%= hotel.description %>"
                     required>
                 <div class="invalid-feedback">
-                    Add discription.
+                    Add description.
                 </div>
             </div>
 

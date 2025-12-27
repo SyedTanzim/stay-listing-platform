@@ -3,11 +3,21 @@ const Hotel = require('../models/hotel');
 const router = express.Router();
 const wrapAsync = require('../utils/wrapAsync');
 const expressError = require('../errors/expressError');
-const hotelSchema = require('../models/hotel');
 const schemaValidate = require('../models/schemaValidate');
 
 const app = express();
 app.use(express.urlencoded({extended : true}));
+
+//validate function
+const validateFunction = (req, res, next) => {
+    let {error , result} = schemaValidate.validate(req.body.hotel , {abortEarly : false});
+    console.log(result);  
+    if (error) {
+        throw new expressError(400, error);   
+    } else {
+        next();
+    }
+};
 
 //home route
 router.get('/', wrapAsync(async (req, res) => {
@@ -20,13 +30,8 @@ router.get('/create', wrapAsync(async (req, res) => {
     res.render('pages/create.ejs');
 }));
 
-router.post('/create', wrapAsync(async (req, res, next) => {
-    const result = schemaValidate.validate(req.body.hotel , {abortEarly : false});
-    if(result.error){
-        throw new expressError(400, result.error)
-    }
-    console.log(result);
-    const newHotel = new Hotel(result.value);
+router.post('/create', validateFunction, wrapAsync(async (req, res, next) => {
+    const newHotel = new Hotel(req.body.hotel);
     await newHotel.save();
     res.redirect('/hotels');
 }));
@@ -38,14 +43,10 @@ router.get('/edit/:id', wrapAsync(async (req, res) => {
     res.render('pages/edit.ejs', { hotel });
 }));
 
-router.put('/edit/:id', wrapAsync(async (req, res) => {
+router.put('/edit/:id', validateFunction,  wrapAsync(async (req, res) => {
     const id  = req.params.id;
-    const result = schemaValidate.validate(req.body.hotel , {abortEarly : false});
-    if(result.error){
-        throw new expressError(400, result.error)
-    }
-    await Hotel.findByIdAndUpdate(id, result.value);
-    res.redirect('/hotels');
+    await Hotel.findByIdAndUpdate(id, req.body.hotel);
+    res.redirect(`/hotels/${id}`);
 }));
 
 
